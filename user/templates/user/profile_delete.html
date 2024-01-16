@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class='container'>
+
+    <p>Are you sure you want to delete the user profile for {{ profile.user.username }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Confirm Delete</button>
+        </form>
+
+        <br><br>
+        <a href="{% url 'user:profile_detail' profile.id %}">Cancel</a>
+
+
+</div>
+
+
+
+{% endblock content %}

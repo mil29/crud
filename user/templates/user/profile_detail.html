@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class='container-fluid text-center container'>
+
+
+    <div class='profile-data'>
+
+        <h2>Profile</h2>
+        
+        <p><span>Username:</span> {{ profile.user.username }}</p>
+        <p><span>First Name:</span> {{ profile.first_name }}</p>
+        <p><span>Last Name:</span> {{ profile.last_name }}</p>
+        <p><span>Address Line 1:</span> {{ profile.address1 }}</p>
+        <p><span>Address Line 2:</span> {{ profile.address2 }}</p>
+        <p><span>Post Code:</span> {{ profile.post_code }}</p>
+        <p><span>City:</span> {{ profile.city }}</p>
+        <p><span>Country:</span> {{ profile.country }}</p>
+        <p><span>Email:</span> {{ profile.email }}</p>
+        <p><span>Tel:</span> {{ profile.telephone }}</p>
+
+    </div>
+    
+    
+    <br><br>
+
+     
+    <a href="{% url 'user:profile_update' pk=user.profile.id %}">Update Profile</a>
+
+    <br><br>
+    
+    <a href="{% url 'user:profile_delete' pk=user.profile.id %}">Delete Profile</a>
+
+
+
+    <br><br>
+
+    <a href="{% url 'user:home' %}">Home</a>
+    
+
+
+</div>
+
+
+
+
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load socialaccount %}
+
+
+
+<div class='container-fluid text-center container'>
+    
+    
+    {% if request.user.is_authenticated %}
+
+        <h4>Logged in as :  <b>{{ user.username }}</b></h4>
+
+        {% if user.profile %}
+
+        <br>
+        
+
+            <h5>{{ user.profile.first_name }}</h5>
+            <h5>{{ user.profile.last_name }}</h5>
+            <h5>{{ user.profile.address1 }}</h5>
+            <h5>{{ user.profile.address2 }}</h5>
+            <h5>{{ user.profile.post_code }}</h5>
+            <h5>{{ user.profile.city }}</h5>
+            <h5>{{ user.profile.country }}</h5>
+            <h5>{{ user.profile.email }}</h5>
+            <h5>{{ user.profile.telephone }}</h5>
+    
+
+        <a href="{% url 'user:profile_detail' pk=user.profile.id %}">View Profile</a>
+
+        {% else %}
+        
+        <a href="{% url 'user:profile_create' pk=user.id %}">Create Profile</a>
+
+        {% endif %}
+
+    
+        <br><br>
+        <a href="{% url 'account_logout' %}">Log Out</a>
+    
+    
+    {% else %}
+        <a href="{% provider_login_url 'github' %}">Login</a>
+    {% endif %}
+
+
+</div>
+
+
+
+{% endblock content %}

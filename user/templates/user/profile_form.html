@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class='container text-center'>
+    <h1>Profile Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
+    <br>
+
+    {% if profile %}
+    <a href="{% url 'user:profile_detail' profile.id  %}">Cancel</a>
+    {% endif %}
+    
+    
+</div>
+
+
+{% endblock content %}
